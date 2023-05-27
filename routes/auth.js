@@ -38,7 +38,7 @@ router.post("/", async (req, res) => {
 				.status(400)
 				.send({ message: "An Email sent to your account please verify" });
 		}
-
+a
 		const token = user.generateAuthToken();
 		res.status(200).send({ data: token, message: "logged in successfully" });
 	} catch (error) {
@@ -48,8 +48,8 @@ router.post("/", async (req, res) => {
 
 const validate = (data) => {
 	const schema = Joi.object({
-		email: Joi.string().email().required().label("Email"),
-		password: Joi.string().required().label("Password"),
+		email: Joi.string().email().required(),
+		password: Joi.string().required(),
 	});
 	return schema.validate(data);
 };

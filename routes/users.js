@@ -1,4 +1,4 @@
-const {user, validate, user, user} = require("../models/user");
+const {User, validate} = require("../models/user");
 const router = require("express").Router();
 
 

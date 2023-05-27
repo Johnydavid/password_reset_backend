@@ -2,7 +2,7 @@ const {User} = require("../models/user");
 const Token = require("../models/token");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
-const Joi = require("joi");s
+const Joi = require("joi");
 const express = require("express");
 const router = express.Router();
 const passwordComplexity = require("joi-password-complexity");
@@ -12,7 +12,7 @@ const bcrypt = require("bcrypt");
 
 router.post("/", async (req, res)=>{
     try{
-        const emailSchema = Joi.object({email: Joi.string().email().required().label("Email")});
+        const emailSchema = Joi.object({email: Joi.string().email().required()});
         const {error} = emailSchema.validate(req.body);
         if(error)
         return res.send(400).send(error.details[0].message)
@@ -74,7 +74,7 @@ router.get("/:id/:token", async (req, res)=>{
 router.post("/:id/:token", async(req, res)=>{
     try{
         const passwordSchema = Joi.object({
-            password:passwordComplexity().required().label("Password"),
+            password:passwordComplexity().required(),
         });
         const{error} = passwordSchema.validate(req.body);
         if(error)
