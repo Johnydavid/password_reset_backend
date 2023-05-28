@@ -13,6 +13,13 @@ const port = Number(process.env.PORT) || 3001
 
 app.listen(port, ()=>console.log(`server is running on port ${port}`));
 
+
+app.use(bodyParser.json());
+
+
+
+
+
 // Database Connection
 connection();
 
