@@ -30,7 +30,7 @@ router.post("/", async (req, res)=>{
             }).save();
         }
 
-        const url = `${process.env.BASE_URL}/password-reset/${user_id}/${token.token}/`
+        const url = `${process.env.BASE_URL}/password-reset/${user._id}/${token.token}/`
         await sendEmail(user.email, "Password reset", url);
 
        res.status(200).send("password reset link sent to your email");
@@ -54,7 +54,8 @@ router.get("/:id/:token", async (req, res)=>{
 
         const token = await Token.findOne({
             userId:user._id,
-            token: req.params.token,
+            // token: req.params.token,
+            token: req.body.token,
         })
 
         if(!token)
