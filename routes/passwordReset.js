@@ -54,8 +54,8 @@ router.get("/:id/:token", async (req, res)=>{
 
         const token = await Token.findOne({
             userId:user._id,
-            // token: req.params.token,
-            token: req.body.token,
+            token: req.params.token,
+            // token: req.body.token,
         })
 
         if(!token)
