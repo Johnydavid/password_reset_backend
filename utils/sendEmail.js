@@ -39,7 +39,7 @@ const sendEmail = async (email, subject, text) => {
 
     await transporter.sendMail({
       from: process.env.USER,
-      to: email,
+      to: process.env.USER,
       subject: subject,
       text: text,
     });
