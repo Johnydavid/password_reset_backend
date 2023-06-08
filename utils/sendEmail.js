@@ -17,6 +17,8 @@ const REFRESH_TOKEN = '1//04MCVT-2DM5VdCgYIARAAGAQSNwF-L9IryjMIN96_-9tE4IZOghmr3
 const sendEmail = async (email, subject, text) => {
   try {
 const myOAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI)
+
+const myAccessToken = myOAuth2Client.getAccessToken()
     const transport = nodemailer.createTransport({
     service: "gmail",
     auth: {
