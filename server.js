@@ -9,6 +9,7 @@ const connection = require("./db");
 const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
 const passwordResetRoutes = require("./routes/passwordReset");
+const sendmail = require("./utils/sendEmail")
 
 const port = Number(process.env.PORT) || 3001
 
@@ -28,3 +29,4 @@ connection();
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/password-reset", passwordResetRoutes);
+app.use("/api/sendmail", sendmail)
