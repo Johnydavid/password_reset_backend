@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
     if (error) return res.status(400).send(error.details[0].message);
 
     const user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(400).send("user does not exist");
+    if (!user) return res.status(400).send({message:"user does not exist"});
 
     let token = await Token.findOne({ userId: user._id });
 
@@ -31,9 +31,9 @@ router.post("/", async (req, res) => {
     const url = `${process.env.BASE_URL}/password-reset/${user._id}/${token.token}/`;
     await sendEmail(user.email, "Password reset", url);
 
-    res.status(200).send("password reset link sent to your email");
+    res.status(200).send({ message: "password reset link sent to your email"});
   } catch (error) {
-    res.status(500).send("Internal server Error");
+    res.status(500).send({ message:"Internal server Error"});
     console.log(error);
   }
 });
@@ -48,8 +48,7 @@ router.get("/:id/:token", async (req, res) => {
     const token = await Token.findOne({
       userId: user._id,
       token: req.params.token,
-      // token: req.body.token,
-    });
+         });
 
     if (!token) return res.status(400).send({ message: "Invalid Link" });
 
