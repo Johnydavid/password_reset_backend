@@ -2,12 +2,12 @@
   "name": "password_reset_backend",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "server",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
+    "start": "nodemon server",
     "build": "npm install",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server"
   },
   "keywords": [],
   "author": "",
